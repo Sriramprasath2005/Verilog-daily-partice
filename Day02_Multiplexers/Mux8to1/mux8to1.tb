@@ -1,0 +1,29 @@
+ module mux4to1_tb;
+
+  reg I0, I1, I2, I3,I4, I5, I6, I7 ;
+   reg [3:0] S;
+  wire y;
+
+   mux4to1 DUT(.I0(I0), .I1(I1), .I2(I2), .I3(I3),.I4(I4),.I5(I5),.I6(I6),.I7(I7), .S(S), .y(y));
+
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0, mux4to1_tb);
+
+    $monitor("S=%b | I0=%b | I1=%b | I2=%b | I3=%b | Y=%b ", S, I0, I1, I2, I3, y);
+
+    I0=1; I1=0; I2=1; I3=0; I4=1;
+    I5=0; I6=1; I7=1;
+
+    S=2'b000; #5;
+    S=2'b001; #5;
+    S=2'b010; #5;
+    S=2'b011; #5;
+    S=2'b100; #5;
+    S=2'b101; #5;
+    S=2'b110; #5;
+    S=2'b111; #5;
+
+    $finish;
+  end
+endmodule
