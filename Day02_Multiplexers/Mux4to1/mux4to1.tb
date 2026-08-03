@@ -1,1 +1,26 @@
+// Code your testbench here
 
+ module mux4to1_tb;
+
+  reg I0, I1, I2, I3;
+  reg [1:0] S;
+  wire y;
+
+  mux4to1 DUT(.I0(I0), .I1(I1), .I2(I2), .I3(I3), .S(S), .y(y));
+
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0, mux4to1_tb);
+
+    $monitor("S=%b | I0=%b | I1=%b | I2=%b | I3=%b | Y=%b ", S, I0, I1, I2, I3, y);
+
+    I0=1; I1=0; I2=1; I3=0;
+
+    S=2'b00; #5;
+    S=2'b01; #5;
+    S=2'b10; #5;
+    S=2'b11; #5;
+
+    $finish;
+  end
+endmodule
