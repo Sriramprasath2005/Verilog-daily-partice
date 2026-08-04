@@ -1,0 +1,22 @@
+module mux4to1_tb;
+
+  reg D;
+  reg s0, s1;
+  wire y0, y1, y2, y3;
+
+  mux4to1 DUT (.D(D), .s0(s0), .s1(s1),
+               .y0(y0), .y1(y1), .y2(y2), .y3(y3));
+
+  initial begin
+    $monitor(" S1=%b S0=%b | D=%b | Y0=%b Y1=%b Y2=%b Y3=%b",
+              s1, s0, D, y0, y1, y2, y3);
+
+    D = 1; s0 = 0; s1 = 0; #5;
+    D = 1; s0 = 1; s1 = 0; #5;
+    D = 1; s0 = 0; s1 = 1; #5;
+    D = 1; s0 = 1; s1 = 1; #5;
+
+    $finish;
+  end
+
+endmodule
