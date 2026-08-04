@@ -1,1 +1,16 @@
-
+module mux2to1_tb;
+  
+  reg D;
+  reg sel;
+  wire y0,y1;
+  
+  mux2to1 DUT (.D(D),.sel(sel),.y0(y0),.y1(y1));
+  
+  initial begin 
+    $monitor (" SEL= %b | D=%b | Y0=%b | Y1=%b",sel,D,y0,y1 );
+    
+    D=1 ; sel=0 ; #5;
+    D=1 ; sel=1 ; #5;
+    
+    $finish;
+  end
