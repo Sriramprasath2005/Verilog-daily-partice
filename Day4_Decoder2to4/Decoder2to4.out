@@ -1,0 +1,6 @@
+A=00 | EN=1 | Y=0001 
+ A=01 | EN=1 | Y=0010 
+ A=10 | EN=1 | Y=0100 
+ A=11 | EN=1 | Y=1000 
+ A=11 | EN=0 | Y=0000 
+testbench.sv:18: $finish called at 50 (1s)
