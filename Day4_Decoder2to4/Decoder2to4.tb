@@ -1,0 +1,18 @@
+module decode2to4_tb;
+  reg [1:0]a;
+  reg en ;
+  wire [3:0]y;
+  
+  decode2to4 DUT(.a(a),.en(en),.y(y));
+  initial begin
+    $monitor(" A=%b | EN=%b | Y=%b ",a,en,y);
+      
+     en=0; a=2'b00;
+     en=1; a=2'b00; #10;
+           a=2'b01; #10;
+           a=2'b10; #10; 
+           a=2'b11; #10;
+    en=0;           #10;
+    $finish;
+  end
+endmodule
